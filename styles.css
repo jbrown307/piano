@@ -1,9 +1,9 @@
 /*inherit, will tell the targeted elements to use the same value as the parent element*/
 /*The ::before selector creates a pseudo-element which is the first child of the selected element, 
 while the ::after selector creates a pseudo-element which is the last child of the selected element.*/
-*, ::before, ::after {
+*, *::before, *::after {
     box-sizing: inherit;
- }
+  }
 
 /*Browsers can apply default margin and padding values to specific elements. 
 To make sure your piano looks correct, you need to reset the box model.*/
@@ -12,29 +12,33 @@ html {
   }
 
   #piano {
-    position: relative;
     background-color: #00471b;
     width: 992px;
     height: 290px;
     margin: 80px auto;
-    padding: 90px 20px 0 20px;;
-  }
-
-  .keys {
-    background-color: #040404;
-    width: 949px;
-    height: 180px;
-    padding-left: 2px;
-  }
-
-  .key {
-    background-color: #ffffff;
+    padding: 90px 20px 0 20px;
     position: relative;
-    width: 41px;
-    height: 175px;
-    margin: 2px;
-    float: left;
+    border-radius: 10px;
   }
+
+ /*overflow: hidden property will hide any element that is pushed outside the set width value of .keys.*/
+  .keys {
+        background-color: #040404;
+        width: 949px;
+        height: 180px;
+        padding-left: 2px;
+        overflow: hidden;
+      }
+
+      .key {
+        background-color: #ffffff;
+        position: relative;
+        width: 41px;
+        height: 175px;
+        margin: 2px;
+        float: left;
+        border-radius: 0 0 3px 3px;
+      }
 
   /*The content property is used to set or override the content of the element. By default, the 
   pseudo-elements created by the ::before and ::after pseudo-selectors are empty, and the elements 
@@ -42,15 +46,43 @@ html {
   the element is rendered to the page while still being empty.*/
   .key.black--key::after {
     background-color: #1d1e22;
-    width: 32px;
-    height: 100px;
     content: "";
     position: absolute;
     left: -18px;
+    width: 32px;
+    height: 100px;
+    border-radius: 0 0 3px 3px;
   }
 
   .logo {
-    position: absolute;
     width: 200px;
-    top:23px;
+    position: absolute;
+    top: 23px;
+  }
+
+  /*The @media at-rule, also known as a media query, is used to conditionally apply CSS. Media queries 
+are commonly used to apply CSS based on the viewport width using the max-width 
+and min-width properties.*/
+@media (max-width: 768px) {
+    #piano {
+      width: 358px;
+    }
+  
+    .keys {
+      width: 318px;
+    }
+  
+    .logo {
+      width: 150px;
+    }
+  }
+
+  @media (max-width: 1199px) and (min-width: 769px) {
+    #piano {
+      width: 675px;
+    }
+  
+    .keys {
+      width: 633px;
+    }
   }
