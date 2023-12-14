@@ -12,6 +12,7 @@ html {
   }
 
   #piano {
+    position: relative;
     background-color: #00471b;
     width: 992px;
     height: 290px;
@@ -46,4 +47,10 @@ html {
     content: "";
     position: absolute;
     left: -18px;
+  }
+
+  .logo {
+    position: absolute;
+    width: 200px;
+    top:23px;
   }
